@@ -9,7 +9,7 @@ import { graphqlFetcher, QUERY_KEYS } from "../../queryClients";
 const ProductDetailPage = () => {
   const { id } = useParams();
   const { data } = useQuery<Product>([QUERY_KEYS.PRODUCTS, id], () =>
-    graphqlFetcher(GET_PRODUCT),
+    graphqlFetcher(GET_PRODUCT, { id }),
   );
 
   if (!data) {

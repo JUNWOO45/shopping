@@ -7,8 +7,6 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import GNB from "./components/gnb";
 
 const App = () => {
-  console.log("pages: ", pages);
-  console.log("routes: ", routes);
   const element = useRoutes(routes);
   const queryClient = getClient();
 

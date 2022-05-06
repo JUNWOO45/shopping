@@ -28,14 +28,7 @@ export const handlers = [
       }),
     ),
   ),
-  graphql.query(GET_PRODUCT, (req, res, ctx) => {
-    return res(
-      ctx.data({
-        product: {
-          // @TODO GET_PRODUCT 작성
-          name: "hi",
-        },
-      }),
-    );
-  }),
+  graphql.query(GET_PRODUCT, (req, res, ctx) =>
+    res(ctx.data(MOCK_PRODUCTS[0])),
+  ),
 ];
