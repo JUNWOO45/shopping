@@ -4,7 +4,7 @@ import ProductItem from "../../components/products/ProductItem";
 import { fetcher, QUERY_KEYS } from "../../queryClients";
 import { TProductItem } from "../../types/productTypes";
 
-const ProductList = () => {
+const ProductListPage = () => {
   const { data } = useQuery<TProductItem[]>(QUERY_KEYS.PRODUCTS, () => {
     return fetcher({ method: "GET", path: "/products" });
   });
@@ -18,4 +18,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default ProductListPage;

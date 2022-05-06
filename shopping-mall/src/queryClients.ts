@@ -18,7 +18,17 @@ export const getClient = (() => {
   let client: QueryClient | null = null;
   return () => {
     if (!client) {
-      client = new QueryClient();
+      client = new QueryClient({
+        defaultOptions: {
+          queries: {
+            cacheTime: 1000 * 60 * 60 * 24,
+            staleTime: 1000 * 60,
+            refetchOnMount: false,
+            refetchOnReconnect: false,
+            refetchOnWindowFocus: false,
+          },
+        },
+      });
     }
     return client;
   };
@@ -36,8 +46,7 @@ export const fetcher = async ({
   params?: AnyObj;
 }) => {
   try {
-    const url = `${BASE_URL}${path}`;
-
+    let url = `${BASE_URL}${path}`;
     const fetchOptions: RequestInit = {
       method,
       headers: {
@@ -45,6 +54,15 @@ export const fetcher = async ({
         "Access-Control-Allow-Origin": BASE_URL,
       },
     };
+    if (body) {
+      fetchOptions.body = JSON.stringify(body);
+    }
+
+    if (params) {
+      const searchParams = new URLSearchParams(params);
+      url += "?" + searchParams.toString();
+    }
+
     const res = await fetch(url, fetchOptions);
     const json = await res.json();
 
