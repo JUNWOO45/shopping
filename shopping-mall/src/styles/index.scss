@@ -1,1 +1,10 @@
-@import url(./product.scss)
+@import url(./product.scss);
+
+.gnb {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  max-width: 300px;
+  justify-content: space-between;
+
+}
