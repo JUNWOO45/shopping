@@ -11,12 +11,11 @@ const ProductItem = ({
   title,
 }: TProductItem) => {
   return (
-    <li>
-      <div>{category}</div>
-      <div>{description}</div>
-      <img src={image} />
-      <div>{price}</div>
-      <div>{rating.rate}</div>
+    <li className="product-item">
+      <div className="product-item__category">{category}</div>
+      <img className="product-item__image" src={image} />
+      <div className="product-item__price">{price}</div>
+      <div className="product-item__reate">{rating.rate}</div>
     </li>
   );
 };

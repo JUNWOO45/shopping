@@ -9,10 +9,8 @@ const ProductList = () => {
     return fetcher({ method: "GET", path: "/products" });
   });
 
-  console.log("data : ", data);
-
   return (
-    <ul>
+    <ul className="product-list">
       {data?.map(productItem => (
         <ProductItem {...productItem} key={productItem.id} />
       ))}
